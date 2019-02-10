@@ -1,2 +1,3 @@
 <p>The Server component </p>
-<p> Server with ID {{serverId}}  is {{getServerStatus()}} </p>
+<!-- Binding to a property ngStyle of the directive ngStyle -->
+<p [ngStyle]="{backgroundColor: getColor()}"> Server with ID {{serverId}}  is {{getServerStatus()}} </p>
