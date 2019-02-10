@@ -1,3 +1,5 @@
 <p>The Server component </p>
 <!-- Binding to a property ngStyle of the directive ngStyle -->
-<p [ngStyle]="{backgroundColor: getColor()}"> Server with ID {{serverId}}  is {{getServerStatus()}} </p>
+<!-- ng-class also work as intended using the property bindings -->
+<p [ngStyle]="{backgroundColor: getColor()}"
+   [ngClass]="{online : getServerStatus() === 'online'}"> Server with ID {{serverId}}  is {{getServerStatus()}} </p>
