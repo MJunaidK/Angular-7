@@ -30,5 +30,7 @@
     to the click, string interpolation to output the data.
     Here property binding to enable the button in the first place after two seconds and two way binding to 
     fetch our input</p>
- <app-server></app-server>
+
+  <!-- ngFor is a structural directive, changing the DOM   -->
+ <app-server *ngFor="let server of servers"></app-server>
 
