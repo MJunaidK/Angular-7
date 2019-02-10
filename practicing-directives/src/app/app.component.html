@@ -1,0 +1,9 @@
+<hr>
+<!-- <button class="btn btn-primary" (click)="showSecret = !showSecret">Display details</button> -->
+<button class="btn btn-primary" (click)="onToggleDetails()">Display details</button>
+
+<p *ngIf= "showSecret">Secret Password = tuna</p>
+
+<div *ngFor="let logItem of log"
+  [ngStyle]="{backgroundColor : logItem >= 5 ? 'blue' : 'transparent'}"
+  [ngClass]="{'white-text': logItem >= 5}">{{logItem}}</div>
