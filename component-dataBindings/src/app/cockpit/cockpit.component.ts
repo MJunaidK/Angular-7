@@ -12,8 +12,8 @@ export class CockpitComponent implements OnInit {
   //  it's not input because we're not getting something passed into this component
  //  It's  @output with parentheses because we're passing something out of the component 
 
-  @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
-  @Output() blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  @Output('svCreated') serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
 
   newServerName= '';
   newServerContent = '';
