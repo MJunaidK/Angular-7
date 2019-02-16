@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, OnDestroy, ViewChild, ElementRef, ContentChild } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -18,6 +18,8 @@ export class ServerElementComponent implements
   @Input('srvelement') element: {type: string, name : string, content: string};
   @Input() name:string;
   @ViewChild('heading') header: ElementRef; 
+  // Adding @ContentChild to get access to content which is stored in another component but then passed on via ng-content.
+  @ContentChild('contentParagraph') paragraph: ElementRef;
 
   constructor() {
     console.log('constructor called!');
@@ -31,6 +33,7 @@ export class ServerElementComponent implements
   ngOnInit() {
     console.log('ngOnInit called!');
     console.log('Text content in ngOnInit' + this.header.nativeElement.textContent);
+    console.log('Child content in ngOnInit' + this.paragraph.nativeElement.textContent);
   }
 
   ngDoCheck(){
@@ -40,6 +43,7 @@ export class ServerElementComponent implements
   //Called whenever the content that is projected by ngContent has been intialized.Not the view of the component itself but instead view of the parent compoent, the part that will be added to our component through ng-content
   ngAfterContentInit(){
     console.log('ngAfterContentInit called!');
+    console.log('Child content in ngAfterContentInit' + this.paragraph.nativeElement.textContent);
   }
 
   // Called after each change detection cycle
