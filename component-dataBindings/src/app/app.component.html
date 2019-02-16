@@ -1,5 +1,9 @@
 <div class="container">
-  <app-cockpit></app-cockpit>
+    <!-- So just like in any other built in event like click here we listen for serverCreatedEvent
+    and once the server was created we execute some code just like in any other built in event.
+    And we even expect to get some data with $event which is an object that gives us some required information about that server like name and coyent. -->
+  <app-cockpit (serverCreated)="onServerAdded($event)"
+  (blueprintCreated)="onBluePrintAdded($event)"></app-cockpit>
   <hr>
   <div class="row">
     <div class="col-xs-12">
