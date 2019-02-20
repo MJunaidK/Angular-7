@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { LoggingService} from '../logging.service';
+import { AccountsService } from '../accounts.service';
 
 @Component({
   selector: 'app-new-account',
@@ -9,8 +10,7 @@ import { LoggingService} from '../logging.service';
 })
 export class NewAccountComponent implements OnInit {
 
-  @Output() accountAdded =  new EventEmitter<{name: string, status: string}>();
-  constructor(private loggingService: LoggingService) { 
+    constructor(private loggingService: LoggingService, private accountsService: AccountsService) { 
 
   }
 
@@ -18,12 +18,8 @@ export class NewAccountComponent implements OnInit {
   }
 
   onCreateAccount(accountName: string, accountStatus: string){
-    this.accountAdded.emit({name: accountName,status: accountStatus});
-    //Incorrect way to instantiate a service
-     //const service = new LoggingService();
-     //service.logStatusChange('A server status changed, new status: '+ accountStatus);
-
-     this.loggingService.logStatusChange(accountStatus);
+    this.accountsService.addAccount(accountName, accountStatus);
+    this.loggingService.logStatusChange(accountStatus);
   }
 
 }
