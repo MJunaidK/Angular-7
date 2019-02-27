@@ -10,10 +10,12 @@ import { UsersComponent } from './users/users.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
+import { UserComponent } from './users/user/user.component';
 
 const appRoutes: Routes=[
   {path: '', component: UsersComponent},
-  {path: 'users', component: HomeComponent}, 
+  {path: 'users', component: UsersComponent}, 
+  {path: 'users/:id', component: UserComponent}, 
   {path: 'servers', component: ServersComponent}
 ]
 
@@ -24,7 +26,8 @@ const appRoutes: Routes=[
     ServersComponent,
     UsersComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
