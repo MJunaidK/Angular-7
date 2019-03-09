@@ -11,6 +11,7 @@ export class AppComponent {
 
   // Access the form before submit use viewChild
   @ViewChild('f') signupForm: NgForm; 
+  defaultQuestion = 'pet';
 
   suggestUserName() {
     const suggestedName = 'Superuser';
