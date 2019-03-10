@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <div id="user-data">
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label> 
             <!-- Adding ngModel and name attribute makes this control registered in this javascript representation on the form -->
@@ -15,6 +15,7 @@
           </div>
           <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email !</span>
         </div>
+        <p *ngIf="!userData.valid && userData.touched"> User data is invalid! </p>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
           <select id="secret" class="form-control" [ngModel]="defaultQuestion" name="secret"> <!-- Here ngModel one way binding to give that control a default value  -->
