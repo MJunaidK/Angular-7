@@ -15,8 +15,27 @@ export class AppComponent {
   answer = '';
   genders = ['male', 'female'];
 
+//setValue to set your while form
+//PatchValue to override parts of the form
+
   suggestUserName() {
     const suggestedName = 'Superuser';
+    // this.signupForm.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret : 'pet',
+    //   questionAnswer: '',
+    //   gender: 'male'
+    // })
+
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    })
+
   }
 
   // onSubmit(form: NgForm){
