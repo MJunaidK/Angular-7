@@ -6,7 +6,7 @@
           <div class="form-group">
             <label for="username">Username</label> 
             <!-- Adding ngModel and name attribute makes this control registered in this javascript representation on the form -->
-            <input type="text" id="username" class="form-control" ngModel name="username" required>
+             <input type="text" id="username" class="form-control" ngModel name="username" required> <!-- No  binding here with ngModel to tell input is a control -->
           </div>
           <button class="btn btn-default" type="button">Suggest an Username</button>
           <div class="form-group">
@@ -17,11 +17,15 @@
         </div>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
-          <select id="secret" class="form-control" [ngModel]="defaultQuestion" name="secret">
+          <select id="secret" class="form-control" [ngModel]="defaultQuestion" name="secret"> <!-- Here ngModel one way binding to give that control a default value  -->
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
+        <div class="form-group">
+          <textarea name="questionAnswer" rows="3" class="form-control" [(ngModel)]= "answer"></textarea> <!-- Here ngModel two way binding to instantly output it  -->
+        </div>
+        <p>Your reply: {{answer}}</p>
         <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
       </form>
     </div>
