@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ServersService } from './servers.service';
 
 @Component({
   selector: 'app-root',
@@ -20,12 +21,23 @@ export class AppComponent {
     }
   ];
 
+  constructor(private serverService: ServersService){
+
+  }
   onAddServer(name: string) {
     this.servers.push({
       name: name,
       capacity: 50,
       id: this.generateId()
     });
+  }
+
+  onSave(){
+    this.serverService.storeServers(this.servers)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      );
   }
 
   private generateId() {
