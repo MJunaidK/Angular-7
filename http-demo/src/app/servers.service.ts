@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http,Headers, Response} from '@angular/http';
-import {map} from 'rxjs/operators';
+import {map, catchError} from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable()
 export class ServersService {
@@ -28,7 +29,10 @@ export class ServersService {
                 }
                 return data;
             }
-           )
+           ),
+           catchError( (error: Response) => { 
+               return throwError(error);
+            })
         );
     }
 }
