@@ -16,6 +16,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 import { RecipesModule } from './recipes/recipes.module';
+import { RecipesRoutingModule } from './recipes/recipes-routing.module';
 
 
 @NgModule({
@@ -32,8 +33,8 @@ import { RecipesModule } from './recipes/recipes.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
-    RecipesModule
+    RecipesModule,
+    AppRoutingModule    
   ],
   providers: [ShoppingListService, RecipeService,DataStorageService, AuthService,AuthGuard],
   bootstrap: [AppComponent]
