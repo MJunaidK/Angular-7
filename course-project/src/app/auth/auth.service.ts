@@ -24,7 +24,10 @@ export class AuthService {
                     }
             )
             .catch(
-                error => console.log(error)
+                error => {
+                    this.token ="fgewgfyu";
+                    console.log(error)
+                } 
             );
     }
 
@@ -34,5 +37,9 @@ export class AuthService {
              (token: string) =>this.token = token
         );
      return this.token;
+    }
+
+    isAutheticated(){
+        return this.token !=null ;
     }
 }
