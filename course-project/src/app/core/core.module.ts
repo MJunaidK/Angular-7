@@ -3,6 +3,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations:[
@@ -11,7 +12,8 @@ import { AppRoutingModule } from '../app-routing.module';
     ],
     imports:[
         SharedModule,
-        AppRoutingModule
+        AppRoutingModule,
+        CommonModule
     ],
     exports:[
         AppRoutingModule,
