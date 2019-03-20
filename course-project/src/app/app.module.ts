@@ -13,6 +13,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { LoggingInterceptor } from './shared/logging.interceptor';
 
 
 
@@ -30,7 +31,8 @@ import { AuthInterceptor } from './shared/auth.interceptor';
     CoreModule    
   ],
   providers: [ShoppingListService, RecipeService,DataStorageService, AuthService,AuthGuard,
-               {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor, multi: true}],
+               {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor, multi: true},
+               {provide: HTTP_INTERCEPTORS,useClass: LoggingInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
