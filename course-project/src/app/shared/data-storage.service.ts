@@ -22,7 +22,7 @@ export class DataStorageService{
 
     const req = new HttpRequest('PUT','http://ng-recipe-book.firebaseio.com/recipes.json', 
                     this.recipeService.getRecipes(),{reportProgress: true, params: new HttpParams().set('auth','token')});
-    this.httpClient.request(req);
+    return this.httpClient.request(req);
 
     }
  
