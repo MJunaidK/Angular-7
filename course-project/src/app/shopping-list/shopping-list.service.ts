@@ -13,14 +13,14 @@ export class ShoppingListService{
    public getIngredientsByIndex(index:number){
     return this.ingredients[index];
   }
-  public getIngredients(){
-      return this.ingredients.slice();
-  }
+  // public getIngredients(){
+  //     return this.ingredients.slice();
+  // }
 
-  public addIngredient(ingredient: Ingredient){
-    this.ingredients.push(ingredient);
-    this.ingredientsChanged.next(this.ingredients.slice());
-  }
+  // public addIngredient(ingredient: Ingredient){
+  //   this.ingredients.push(ingredient);
+  //   this.ingredientsChanged.next(this.ingredients.slice());
+  // }
 
   public addIngredients(ingredients: Ingredient[]){
     this.ingredients.push(...ingredients);
