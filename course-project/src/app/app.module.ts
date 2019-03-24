@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreModule} from '@ngrx/store';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
@@ -14,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { LoggingInterceptor } from './shared/logging.interceptor';
+import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
 
 
 
@@ -28,7 +30,8 @@ import { LoggingInterceptor } from './shared/logging.interceptor';
     AppRoutingModule,
     ShoppingListModule,
     AuthModule,
-    CoreModule    
+    CoreModule,
+    StoreModule.forRoot({shoppingList: shoppingListReducer})
   ],
   providers: [ShoppingListService, RecipeService,DataStorageService, AuthService,AuthGuard,
                {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor, multi: true},
