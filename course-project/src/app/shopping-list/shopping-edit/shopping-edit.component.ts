@@ -29,12 +29,10 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
           if(data.editedIngredientIndex > -1){
             this.editedItem= data.editedIngredient;
             this.editMode =true;
-            setTimeout(() => {
             this.slForm.setValue({
                    name: this.editedItem.name,
                    amount: this.editedItem.amount
              });
-            },500); 
           }else{
             this.editMode = false;
           }
@@ -69,6 +67,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
+    this.store.dispatch(new ShoppingListActions.StopEdit());
     this.subscription.unsubscribe();
   }
 
