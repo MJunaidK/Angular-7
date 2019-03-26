@@ -35,24 +35,35 @@ export function shoppingListReducer(state = initialState, action: ShoppingAction
                 ingredients: [...state.ingredients, ...action.payload]
             };
         case ShoppingActions.UPDATE_INGREDIENT:
-            const ingredient= state.ingredients[action.payload.index];
+            const ingredient= state.ingredients[state.editedIngredientIndex];
             const updatedIngredient= {  // copy all the properties of the old ingredient to updated in an immutable way
                 ...ingredient, 
                 ...action.payload.ingredient
             }
             const ingredients = [...state.ingredients];
-            ingredients[action.payload.index] = updatedIngredient;
+            ingredients[state.editedIngredientIndex] = updatedIngredient;
             return{
                 ...state,
-                ingredients: ingredients
+                ingredients: ingredients,
+                editedIngredient: null,
+                editedIngredientIndex: -1
             };
         case ShoppingActions.DELETE_INGREDIENT:
             const oldIngredients = [...state.ingredients];
-            ingredients.slice(action.payload,1);
+            oldIngredients.splice(state.editedIngredientIndex,1);
             return{
                 ...state,
-                ingredients: [...state.ingredients, ingredients]
-            };            
+                ingredients: oldIngredients,
+                editedIngredient: null,
+                editedIngredientIndex: -1
+            };
+        case ShoppingActions.START_EDIT:
+            const editedIngredient = {...state.ingredients[action.payload]};
+            return{
+                ...state,
+                editedIngredient: editedIngredient,
+                editedIngredientIndex: action.payload
+            }                
         default:
             return state;    
     }

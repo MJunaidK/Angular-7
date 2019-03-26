@@ -1,5 +1,7 @@
 import {Ingredient} from '../shared/ingredient.model';
 import { Subject } from 'rxjs';
+
+// This service is not used as we are using NgStore for same.
 export class ShoppingListService{
 
   ingredientsChanged =  new Subject<Ingredient[]>();  
