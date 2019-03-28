@@ -16,6 +16,7 @@ import { CoreModule } from './core/core.module';
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { LoggingInterceptor } from './shared/logging.interceptor';
 import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
+import { AppReducers } from './store/app.reducers';
 
 
 
@@ -31,7 +32,7 @@ import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer
     ShoppingListModule,
     AuthModule,
     CoreModule,
-    StoreModule.forRoot({shoppingList: shoppingListReducer})
+    StoreModule.forRoot(AppReducers)
   ],
   providers: [ShoppingListService, RecipeService,DataStorageService, AuthService,AuthGuard,
                {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor, multi: true},
