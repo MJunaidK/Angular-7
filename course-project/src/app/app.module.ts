@@ -17,6 +17,8 @@ import { AuthInterceptor } from './shared/auth.interceptor';
 import { LoggingInterceptor } from './shared/logging.interceptor';
 import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
 import { AppReducers } from './store/app.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/store/auth.effects';
 
 
 
@@ -32,7 +34,8 @@ import { AppReducers } from './store/app.reducers';
     ShoppingListModule,
     AuthModule,
     CoreModule,
-    StoreModule.forRoot(AppReducers)
+    StoreModule.forRoot(AppReducers),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [ShoppingListService, RecipeService,DataStorageService, AuthService,AuthGuard,
                {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor, multi: true},
