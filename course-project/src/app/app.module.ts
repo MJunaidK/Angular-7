@@ -19,6 +19,7 @@ import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer
 import { AppReducers } from './store/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/store/auth.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store'
 
 
 
@@ -35,7 +36,8 @@ import { AuthEffects } from './auth/store/auth.effects';
     AuthModule,
     CoreModule,
     StoreModule.forRoot(AppReducers),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    StoreRouterConnectingModule
   ],
   providers: [ShoppingListService, RecipeService,DataStorageService, AuthService,AuthGuard,
                {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor, multi: true},
