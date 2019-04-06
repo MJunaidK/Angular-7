@@ -5,6 +5,7 @@ import * as AuthActions from './auth.action';
 import { map, switchMap, mergeMap } from 'rxjs/operators';
 import {from} from 'rxjs';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects{
@@ -49,6 +50,7 @@ authSignin = this.action$.pipe(
         return 'hduehfehfeuh'
     }),
     mergeMap((token: string) => {
+        this.router.navigate(['/']);
         return [
             {
                 type: AuthActions.SIGNIN
@@ -64,7 +66,7 @@ authSignin = this.action$.pipe(
 
 
 
-constructor(private action$: Actions){
+constructor(private action$: Actions, private router: Router){
 
 }
 
