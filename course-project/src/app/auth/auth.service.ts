@@ -32,6 +32,8 @@ export class AuthService {
 
         // Adding below two lines as firebase is not set up
        // this.token ="fgewgfyu";
+       this.store.dispatch(new AuthActions.SetToken('hjfgegfeuwr'));
+       this.store.dispatch(new AuthActions.Signin());
         this.router.navigate(['/']);
         firebase.auth().signInWithEmailAndPassword(email,password)
             .then(response => {
