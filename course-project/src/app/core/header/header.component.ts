@@ -25,13 +25,14 @@ export class HeaderComponent implements OnInit{
     }
 
     onSaveData(){
-        this.dataStorageService.storeRecipes()
-        .subscribe(
-            (response: HttpEvent<Object>) => {
-                console.log(response);
-                console.log(response.type === HttpEventType.Sent);
-            }
-        )
+        this.store.dispatch(new RecipeActions.StoreRecipes());
+        // this.dataStorageService.storeRecipes()
+        // .subscribe(
+        //     (response: HttpEvent<Object>) => {
+        //         console.log(response);
+        //         console.log(response.type === HttpEventType.Sent);
+        //     }
+        // )
     }
 
     onFetchData(){
