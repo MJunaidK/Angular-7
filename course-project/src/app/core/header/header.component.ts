@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromAuth from '../../auth/store/auth.reducer';
 import * as AuthActions from '../../auth/store/auth.action';
+import * as RecipeActions from '../../recipes/Store/recipe.actions';
 
 @Component({
     selector: 'app-header',
@@ -34,7 +35,8 @@ export class HeaderComponent implements OnInit{
     }
 
     onFetchData(){
-        this.dataStorageService.getRecipes();
+        //this.dataStorageService.getRecipes();
+        this.store.dispatch(new RecipeActions.FetchRecipes());
     }
 
     onLogout(){
